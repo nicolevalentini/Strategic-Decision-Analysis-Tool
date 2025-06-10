@@ -1,3 +1,7 @@
+
+![app-icon-192](https://github.com/user-attachments/assets/cef421a7-dfc7-4426-87b7-a9c61de137a5)
+
+
 # Strategic Decision Analysis Tool
 
 ## What is this app?
