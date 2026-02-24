@@ -138,12 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="example-text"><strong>e.g.</strong> "Launching a New Product" might have: Impact: 8, Probability: 0.3, Importance: 9</span>
       </div>
       <div class="outcome-header-grid">
-  <span>What might happen?</span>
-  <span>Impact</span>
-  <span>Probability</span>
-  <span>Importance</span>
-  <span></span>
-</div>
+        <span>What might happen?</span>
+        <span>Impact</span>
+        <span>Probability</span>
+        <span>Importance</span>
+        <span></span>
+      </div>
+      <div class="outcomes-list"></div>
       <button class="btn btn-outline" type="button" onclick="addOutcome(this)" style="margin-top: 1rem;">➕ Add Outcome</button>
     `;
 
