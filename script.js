@@ -137,7 +137,13 @@ document.addEventListener('DOMContentLoaded', function() {
         • <strong>Importance (1-10):</strong> How much do you care about this outcome? (1=not important, 10=critical)<br>
         <span class="example-text"><strong>e.g.</strong> "Launching a New Product" might have: Impact: 8, Probability: 0.3, Importance: 9</span>
       </div>
-      <div class="outcomes-list"></div>
+      <div class="outcome-header-grid">
+  <span>What might happen?</span>
+  <span>Impact</span>
+  <span>Probability</span>
+  <span>Importance</span>
+  <span></span>
+</div>
       <button class="btn btn-outline" type="button" onclick="addOutcome(this)" style="margin-top: 1rem;">➕ Add Outcome</button>
     `;
 
