@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {number|null} [index=null] - The index for the choice card.
    * @returns {HTMLDivElement} The choice card element.
    */
-  function createChoiceCard(index = null) {
+  function createChoiceCard(index = null, placeholder = 'e.g. Expanding an Existing Market') {
     const choiceIdx = index !== null ? index : choiceCount++;
     const card = document.createElement('div');
     card.className = 'choice-card fade-in';
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <button class="remove-choice" onclick="removeChoice(this)" title="Remove this option">×</button>
       <div class="form-group">
         <label>Option Name</label>
-        <input type="text" placeholder="e.g. Expanding an Existing Market" class="choice-name">
+        <input type="text" placeholder="${placeholder}" class="choice-name">
       </div>
       <div class="instruction-box">
         <strong>For each outcome, enter 3 numbers:</strong><br>
@@ -163,9 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {number|null} [index=null] - The index for the new choice card.
    */
   function addChoice(index = null) {
-    choicesList.appendChild(createChoiceCard(index));
-    choiceCount = document.querySelectorAll('.choice-card').length;
-  }
+  choicesList.appendChild(createChoiceCard(index, 'e.g. Enter your option here'));
+  choiceCount = document.querySelectorAll('.choice-card').length;
+}
 
   // Make functions global so they can be called from onclick handlers
   window.removeChoice = function(btn) {
@@ -189,8 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // Add initial choice cards
-  addChoice();
-  addChoice();
+  choicesList.appendChild(createChoiceCard(0, 'e.g. Expanding an Existing Market'));
+  choicesList.appendChild(createChoiceCard(1, 'e.g. Launching a New Product'));
+  choiceCount = 2;
 
   addChoiceBtn.addEventListener('click', function() {
     addChoice();
