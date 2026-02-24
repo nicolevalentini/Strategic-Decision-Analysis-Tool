@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     row.className = 'outcome-grid fade-in';
     
     row.innerHTML = `
-      <input type="text" placeholder="What might happen?" value="${description}">
+      <input type="text" placeholder="E.g: Opens new revenue streams" value="${description}">
       <input type="number" placeholder="-10 to 10" value="${impact}" min="-10" max="10" title="How big is the impact? (-10=very bad, 10=very good)">
       <input type="number" placeholder="0-1" value="${probability}" min="0" max="1" step="0.1" title="How likely is this? (0=never, 1=certain)">
       <input type="number" placeholder="1-10" value="${importance}" min="1" max="10" title="How important is this outcome? (1=not important, 10=critical)">
@@ -128,14 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
       <button class="remove-choice" onclick="removeChoice(this)" title="Remove this option">×</button>
       <div class="form-group">
         <label>Option Name</label>
-        <input type="text" placeholder="e.g. Social Media Campaign" class="choice-name">
+        <input type="text" placeholder="e.g. Expanding an Existing Market" class="choice-name">
       </div>
       <div class="instruction-box">
         <strong>For each outcome, enter 3 numbers:</strong><br>
         • <strong>Impact (-10 to +10):</strong> How big is the effect? Use positive for good outcomes (1-10), negative for bad outcomes (-10 to -1)<br>
         • <strong>Probability (0-1):</strong> How likely is this? (0=never happens, 1=always happens)<br>
         • <strong>Importance (1-10):</strong> How much do you care about this outcome? (1=not important, 10=critical)<br>
-        <span class="example-text"><strong>e.g.</strong> "Lose lawsuit" might be Impact: -8, Probability: 0.3, Importance: 9</span>
+        <span class="example-text"><strong>e.g.</strong> "Launching a New Product" might have: Impact: 8, Probability: 0.3, Importance: 9</span>
       </div>
       <div class="outcomes-list"></div>
       <button class="btn btn-outline" type="button" onclick="addOutcome(this)" style="margin-top: 1rem;">➕ Add Outcome</button>
