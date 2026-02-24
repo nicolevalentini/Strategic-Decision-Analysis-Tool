@@ -92,12 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {string|number} [importance=''] - The importance value.
    * @returns {HTMLDivElement} The outcome row element.
    */
-  function createOutcomeRow(choiceIdx, outIdx, description = '', impact = '', probability = '', importance = '') {
+  function createOutcomeRow(choiceIdx, outIdx, description = '', impact = '', probability = '', importance = '', placeholder = 'E.g: Opens new revenue streams') {
     const row = document.createElement('div');
     row.className = 'outcome-grid fade-in';
     
     row.innerHTML = `
-      <input type="text" placeholder="E.g: Opens new revenue streams" value="${description}">
+      <input type="text" placeholder="${placeholder}" value="${description}">
       <input type="number" placeholder="-10 to 10" value="${impact}" min="-10" max="10" title="How big is the impact? (-10=very bad, 10=very good)">
       <input type="number" placeholder="0-1" value="${probability}" min="0" max="1" step="0.1" title="How likely is this? (0=never, 1=certain)">
       <input type="number" placeholder="1-10" value="${importance}" min="1" max="10" title="How important is this outcome? (1=not important, 10=critical)">
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
    * @param {number|null} [index=null] - The index for the choice card.
    * @returns {HTMLDivElement} The choice card element.
    */
-  function createChoiceCard(index = null, placeholder = 'e.g. Expanding an Existing Market') {
+    function createChoiceCard(index = null, placeholder = 'e.g. Enter your option here', outcomePlaceholders = ['E.g: Opens new revenue streams', 'E.g: Increases operational costs']) {
     const choiceIdx = index !== null ? index : choiceCount++;
     const card = document.createElement('div');
     card.className = 'choice-card fade-in';
@@ -149,10 +149,10 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
 
     const outcomesList = card.querySelector('.outcomes-list');
-    // Add two empty outcome rows by default
+// Add two empty outcome rows by default
     for (let i = 0; i < 2; i++) {
-      outcomesList.appendChild(createOutcomeRow(choiceIdx, i));
-    }
+    outcomesList.appendChild(createOutcomeRow(choiceIdx, i, '', '', '', '', outcomePlaceholders[i] || 'E.g: Describe a possible outcome'));
+  }
     // Attach debounced input listener to option name
     card.querySelector('.choice-name').addEventListener('input', debouncedInputHandler);
     return card;
@@ -189,13 +189,18 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // Add initial choice cards
-  choicesList.appendChild(createChoiceCard(0, 'e.g. Expanding an Existing Market'));
-  choicesList.appendChild(createChoiceCard(1, 'e.g. Launching a New Product'));
+  // Add initial choice cards
+  choicesList.appendChild(createChoiceCard(
+  0,
+  'e.g. Expanding an Existing Market',
+  ['E.g: Increases market share', 'E.g: Higher customer retention']
+));
+  choicesList.appendChild(createChoiceCard(
+  1,
+  'e.g. Launching a New Product',
+  ['E.g: Opens new revenue streams', 'E.g: High upfront development costs']
+));
   choiceCount = 2;
-
-  addChoiceBtn.addEventListener('click', function() {
-    addChoice();
-  });
 
   /**
    * Gathers and parses all user input from the DOM into a structured array.
