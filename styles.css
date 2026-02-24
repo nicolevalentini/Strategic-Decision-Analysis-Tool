@@ -453,6 +453,27 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--border);
 }
 
+.outcome-header-grid {
+  display: grid;
+  grid-template-columns: 2fr 120px 120px 120px 50px;
+  gap: 1rem;
+  padding: 0 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.outcome-header-grid span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.outcome-header-grid span:first-child {
+  text-align: left;
+}
+
 .btn {
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
   color: white;
